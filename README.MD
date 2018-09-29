@@ -1,0 +1,1 @@
+Just a simple script to create a journal text file and open it in sublime.
