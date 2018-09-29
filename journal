@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+
+import os, pathlib, datetime
+#Default directory where entries will be kept
+journalDir = os.path.expanduser("~/Journal")
+#Create the directory if it does not exist
+pathlib.Path(journalDir).mkdir(parents=True, exist_ok=True) 
+
+#Get current date
+today = datetime.date.today()
+
+dateHeader = today.strftime("%A, %B %d %Y")
+headerLine = '-' * len(dateHeader)
+fileName = today.strftime("%m_%d_%y.txt")
+filePath = journalDir + "/" + fileName
+
+if not os.path.isfile(filePath):
+	f = open(filePath, 'a+')
+	f.write(dateHeader + "\n")
+	f.write(headerLine + "\n")
+	f.close()
+
+os.system('subl ' + filePath)
